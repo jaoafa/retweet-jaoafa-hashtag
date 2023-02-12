@@ -1,4 +1,4 @@
-import fs from 'fs'
+import fs from 'node:fs'
 import { Logger } from './logger'
 
 export const PATH = {
@@ -27,7 +27,7 @@ const isConfig = (config: any): config is Configuration => {
       typeof config.twapi.basicUsername === 'string',
     'twapi.basicPassword is defined': !!config.twapi.basicPassword,
     'twapi.basicPassword is string':
-      typeof config.twapi.basicPassword === 'string',
+      typeof config.twapi.basicPassword === 'string'
   }
   const result = Object.values(checks).every(Boolean)
   if (!result) {
