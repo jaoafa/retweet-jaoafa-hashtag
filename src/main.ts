@@ -15,19 +15,19 @@ import { TwApi } from './twapi'
     password: config.twapi.basicPassword
   })
   const tweets = await twapi.searchTweet('#jaoafa -from:jaoafa', 10)
-  console.log(`📰 Tweets: ${tweets.length}`)
+  logger.info(`📰 Tweets: ${tweets.length}`)
   const promises = []
   for (const tweet of tweets) {
     if (!isFullUser(tweet.user)) continue
     if (!tweet.full_text.includes('#jaoafa')) continue
     logger.info(`🔄 Retweet: ${tweet.id_str} by ${tweet.user.screen_name}`)
     promises.push(
-      twapi.retweet(tweet.id_str).catch((err) => {
-        if (isAxiosError(err)) {
-          logger.warn(`${tweet.id_str}: ${err.response?.data.message}`)
+      twapi.retweet(tweet.id_str).catch((error) => {
+        if (isAxiosError(error)) {
+          logger.warn(`${tweet.id_str}: ${error.response?.data.message}`)
           return
         }
-        logger.warn(`${tweet.id_str}: ${err.message}`)
+        logger.warn(`${tweet.id_str}: ${error.message}`)
       })
     )
   }
