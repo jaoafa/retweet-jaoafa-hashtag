@@ -26,6 +26,7 @@ RUN apk update && \
 
 WORKDIR /app
 
+COPY entrypoint.sh .
 COPY --from=builder /app/output .
 
 ENV NODE_ENV production
@@ -34,4 +35,4 @@ ENV CONFIG_PATH /data/config.json
 
 VOLUME [ "/data" ]
 
-ENTRYPOINT [ "node", "index.js" ]
+ENTRYPOINT [ "/app/entrypoint.sh" ]
