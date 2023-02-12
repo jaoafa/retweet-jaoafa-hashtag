@@ -27,6 +27,8 @@ RUN apk update && \
 WORKDIR /app
 
 COPY entrypoint.sh .
+RUN chmod 777 entrypoint.sh
+
 COPY --from=builder /app/output .
 
 ENV NODE_ENV production
