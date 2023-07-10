@@ -34,7 +34,7 @@
     "twitter-d": "0.6.0",
     "typescript": "5.1.6",
     "typescript-json-schema": "0.58.1",
-    "winston": "3.9.0",
+    "winston": "3.10.0",
     "winston-daily-rotate-file": "4.7.1",
     "yarn-run-all": "3.1.1"
   },
