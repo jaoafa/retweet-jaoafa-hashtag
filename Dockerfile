@@ -1,4 +1,4 @@
-FROM node:18.16.0-alpine as builder
+FROM node:18.16.1-alpine as builder
 
 WORKDIR /app
 
@@ -14,7 +14,7 @@ COPY tsconfig.json .
 
 RUN yarn package
 
-FROM node:18.16.0-alpine as runner
+FROM node:18.16.1-alpine as runner
 
 # hadolint ignore=DL3018
 RUN apk update && \
